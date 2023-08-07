@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com/zhure/animals/mapper/UserMapper">
+<!--    <resultMap id="userResult" type="User">-->
+<!--        <collection property="posts"-->
+<!--                    javaType="ArrayList"-->
+<!--                    column="id"-->
+<!--                    ofType="com/zhure/animals/entity/Post.java"-->
+<!--                    select="selectPostsForUser"-->
+<!--        />-->
+<!--    </resultMap>-->
+<!--    <select id="selectByUsername" resultMap="userResult">-->
+<!--        SELECT NICK_NAME FROM USER WHERE ID = #{id}-->
+<!--    </select>-->
+
+<!--    <select id="selectPostsForUser" resultType="Post">-->
+<!--        SELECT * FROM POST-->
+<!--        WHERE USER_ID = #{id}-->
+<!--          AND IS_PASS = #{isPass}-->
+<!--    </select>-->
+    <resultMap id="userResult" type="User">
+        <id property="id" column="user_id"/>
+        <result property="username" column="username"/>
+        <result property="nick_name" column="nick_name"/>
+        <collection property="posts" column="user_id" ofType="com/zhure/animals/entity/Post">
+            <id property="id" column="post_id"/>
+            <result column="animal_id" property="animal_id"/>
+            <result column="title" property="title"/>
+            <result column="content" property="content"/>
+            <result column="time" property="time"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectByUsername" resultMap="userResult">
+        select
+               u.id as user_id,
+               u.username,
+               u.nick_name,
+               p.*
+        from User u
+            left outer join Post p on u.id = p.user_id
+        where u.username = #{username}
+          and p.is_pass = #{isPass}
+    </select>
+<!--    <resultMap id="userMap" type="user">-->
+<!--        <id property="id" column="id"></id>-->
+<!--        <result property="username" column="username"></result>-->
+<!--        <result property="nickName" column="nickName"></result>-->
+<!--        <result property="password" column="password"></result>-->
+<!--        <result property="sex" column="sex"></result>-->
+<!--        <result property="birthday" column="birthday"></result>-->
+<!--        <result property="phoneNum" column="phoneNum"></result>-->
+<!--        <result property="email" column="email"></result>-->
+<!--        <result property="address" column="address"></result>-->
+<!--        <result property="userType" column="userType"></result>-->
+<!--        <result property="headImg" column="headImg"></result>-->
+<!--        -->
+<!--        <collection property="posts" column="id" ofType="post">-->
+<!--            <id column="id" property="id"></id>-->
+<!--            <result column="userId" property="userid"></result>-->
+<!--            <result column="animalId" property="animalId"></result>-->
+<!--            <result column="title" property="title"></result>-->
+<!--            <result column="content" property="content"></result>-->
+<!--            <result column="time" property="time"></result>-->
+<!--        </collection>-->
+<!--    </resultMap>-->
+<!--    <select id="findAll" resultMap="userMap">-->
+<!--        select * from users;-->
+<!--    </select>-->
+<!--    <select id="findById" resultMap="userMap" parameterType="int">-->
+<!--        select u.*, a.id-->
+<!--    </select>-->
+</mapper>
