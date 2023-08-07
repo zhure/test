@@ -22,7 +22,7 @@
           <el-upload
               ref="adoptImg"
               class="avatar-uploader"
-              action="http://localhost:9090/files/upload"
+              action="http://120.79.190.143:9090/files/upload"
               :show-file-list="false"
               :on-success="handleAvatarSuccess"
               :before-upload="beforeAvatarUpload"
@@ -59,7 +59,7 @@ import Locate from "@/components/Locate";
 import {ElMessage} from "element-plus";
 
 export default {
-  name: "ReleaseAdaption",
+  name: "ReleaseAdoption",
   components: {
     Locate
   },

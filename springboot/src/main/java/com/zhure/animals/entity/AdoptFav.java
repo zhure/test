@@ -6,15 +6,15 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-@TableName("attention")
+@TableName("adopt_favorite")
 @Data
-public class Attention {
+public class AdoptFav {
     @TableId(type = IdType.AUTO)
     private Integer id;
 
     private Integer userId;
-    private Integer attentionId;
+    private Integer adoptId;
 
     @TableField(exist = false)
-    private User user;
+    private Adoption adoption;
 }

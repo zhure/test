@@ -1,4 +1,4 @@
-package com.example.demo.common;
+package com.zhure.animals.common;
 
 public class Result<T> {
     private String code;

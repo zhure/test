@@ -1,4 +1,4 @@
-package com.zhure.animals.common;
+package com.zhure.animals.common.config;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 //@Deprecated
 @Configuration
 ////@MapperScan("com.baomidou.cloud.service.*.mapper*")
-@MapperScan("com.example.demo.mapper")
+@MapperScan("com.zhure.animals.mapper")
 public class MybatisPlusConfig {
     // 最新版
     @Bean
